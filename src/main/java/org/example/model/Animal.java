@@ -12,6 +12,7 @@ import lombok.AllArgsConstructor;
 public class Animal {
 
     private String type;
+    private String gender;
     private String name;
     private String breed;
     private int age;

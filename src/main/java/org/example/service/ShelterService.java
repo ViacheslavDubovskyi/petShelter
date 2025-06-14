@@ -2,6 +2,7 @@ package org.example.service;
 
 import org.example.model.Animal;
 import org.example.serializer.AnimalSerializer;
+import org.example.util.Commands;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,7 +22,7 @@ public class ShelterService {
             List<Animal> deserialized = serializer.deserializeList(this.shelter);
             this.animals = (deserialized != null) ? deserialized : new ArrayList<>();
         } catch (IOException e) {
-            throw new RuntimeException("Error deserializing shelter", e);
+            throw new RuntimeException(Commands.DESERIALIZE_ERROR.toString(), e);
         }
     }
 
@@ -43,19 +44,18 @@ public class ShelterService {
         }
     }
 
-    public List<Animal> showAll() {
+    public void showAll() {
         if (animals.isEmpty()) {
-            System.out.println("Shelter is empty.");
-            return null;
+            System.out.println(Commands.EMPTY_FILE);
         }
-        return animals;
+        System.out.println(animals);
     }
 
     public void saveAnimals() {
         try {
             serializer.serializeList(animals, shelter);
         } catch (IOException e) {
-            throw new RuntimeException("Error saving shelter data", e);
+            throw new RuntimeException(Commands.ERROR_SAVING_DATA.toString(), e);
         }
     }
 }
