@@ -13,7 +13,9 @@ public enum Commands {
     INVALID_COMMAND("Invalid command. Try again."),
     DESERIALIZE_ERROR("Error deserializing shelter."),
     EMPTY_FILE("Shelter is empty."),
-    ERROR_SAVING_DATA("Error saving shelter data.");
+    ERROR_SAVING_DATA("Error saving shelter data."),
+    SUCCESS("Operation successful!"),
+    FAREWELL("Goodbye!");
 
     private final String message;
 

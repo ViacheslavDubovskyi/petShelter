@@ -15,6 +15,6 @@ public enum PetCard {
     }
 
     public String getPrompt() {
-        return "Enter the" + field + "of the animal: ";
+        return "Enter the " + field + " of the animal: ";
     }
 }

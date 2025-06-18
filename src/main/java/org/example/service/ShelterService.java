@@ -16,39 +16,50 @@ public class ShelterService {
     private List<Animal> animals;
 
     public ShelterService(File shelter, AnimalSerializer serializer) {
-        this.shelter = shelter;
-        this.serializer = serializer;
         try {
-            List<Animal> deserialized = serializer.deserializeList(this.shelter);
-            this.animals = (deserialized != null) ? deserialized : new ArrayList<>();
-        } catch (IOException e) {
+            this.serializer = serializer;
+            this.shelter = shelter;
+            if (!shelter.exists()) {
+                shelter.createNewFile();
+                this.animals = new ArrayList<>();
+            } else {
+                this.animals = serializer.deserializeList(this.shelter);
+            }
+        } catch (
+                IOException e) {
             throw new RuntimeException(Commands.DESERIALIZE_ERROR.toString(), e);
         }
     }
 
-    public void addAnimal(Animal animal) {
+    public boolean addAnimal(Animal animal) {
         if (animal != null) {
             animals.add(animal);
             saveAnimals();
+            return true;
+        } else {
+            return false;
         }
     }
 
-    public void takeAnimal(String animalName) {
-        if (animalName == null) return;
+    public boolean takeAnimal(String animalName) {
+        boolean result = true;
         for (Animal animal : animals) {
-            if (animalName.equalsIgnoreCase(animal.getName())) {
+            String name = animal.getName();
+            if (name != null && animalName.equalsIgnoreCase(animal.getName())) {
                 animals.remove(animal);
                 saveAnimals();
                 break;
             }
         }
+        return result;
     }
 
-    public void showAll() {
+    public List<Animal> showAll() {
         if (animals.isEmpty()) {
             System.out.println(Commands.EMPTY_FILE);
+            return new ArrayList<>();
         }
-        System.out.println(animals);
+        return animals;
     }
 
     public void saveAnimals() {
