@@ -13,7 +13,7 @@ public class ShelterService {
 
     private final File shelter;
     private final AnimalSerializer serializer;
-    private List<Animal> animals;
+    List<Animal> animals;
 
     public ShelterService(File shelter, AnimalSerializer serializer) {
         try {
@@ -42,12 +42,15 @@ public class ShelterService {
     }
 
     public boolean takeAnimal(String animalName) {
-        boolean result = true;
+        boolean result = false;
+        if (animalName == null) return result;
+
         for (Animal animal : animals) {
             String name = animal.getName();
             if (name != null && animalName.equalsIgnoreCase(animal.getName())) {
                 animals.remove(animal);
                 saveAnimals();
+                result = true;
                 break;
             }
         }
