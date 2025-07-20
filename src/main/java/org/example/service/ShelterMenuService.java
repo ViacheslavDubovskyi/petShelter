@@ -22,27 +22,26 @@ public class ShelterMenuService {
             System.out.println("\n" + Commands.MENU);
             String userCommand = scanner.next();
             switch (userCommand) {
-                case "leave":
-                    if (shelterService.addAnimal(AnimalCard())) {
+                case "leave" -> {
+                    if (shelterService.addAnimal(AnimalCard()))
                         System.out.println(Commands.SUCCESS);
-                        break;
-                    }
-                case "take":
+                }
+                case "take" -> {
                     System.out.println(PetCard.NAME.getPrompt());
                     if (shelterService.takeAnimal(scanner.next())) {
                         System.out.println(Commands.SUCCESS);
-                        break;
                     }
-                case "show":
+                }
+                case "show" -> {
                     System.out.println(Commands.LIST);
                     System.out.println(shelterService.showAll());
-                    break;
-                case "exit":
+                }
+                case "exit" -> {
                     shelterService.saveAnimals();
                     System.out.println(Commands.FAREWELL);
                     return;
-                default:
-                    System.out.println(Commands.INVALID_COMMAND);
+                }
+                default -> System.out.println(Commands.INVALID_COMMAND);
             }
         }
     }
