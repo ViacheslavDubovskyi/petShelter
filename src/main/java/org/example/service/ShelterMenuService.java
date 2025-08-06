@@ -63,7 +63,7 @@ public class ShelterMenuService {
                         case BREED -> animalBuilder.breed(userInput);
                     }
                 } else {
-                    if (!isValidAge(userInput)) {
+                    if (!isValidInt(userInput)) {
                         continue;
                     }
                     animalBuilder.age(Integer.parseInt(userInput));
@@ -82,12 +82,12 @@ public class ShelterMenuService {
         return true;
     }
 
-    private boolean isValidAge(String input) {
+    private boolean isValidInt(String input) {
         try {
-            int age = Integer.parseInt(input);
-            return age > 0;
+            int value = Integer.parseInt(input);
+            return value > 0;
         } catch (NumberFormatException e) {
-            System.out.println(Commands.INVALID_AGE);
+            System.out.println(Commands.INVALID_NUMBER);
             return false;
         }
     }
