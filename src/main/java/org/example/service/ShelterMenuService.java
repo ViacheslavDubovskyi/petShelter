@@ -51,7 +51,7 @@ public class ShelterMenuService {
         for (PetCard field : PetCard.values()) {
             System.out.println(field.getPrompt());
             while (true) {
-                String userInput = scanner.next().trim();
+                String userInput = scanner.nextLine().trim();
                 if (field != PetCard.AGE) {
                     if (!isValidString(userInput, field)) {
                         continue;
@@ -64,7 +64,6 @@ public class ShelterMenuService {
                     }
                 } else {
                     if (!isValidAge(userInput)) {
-                        System.out.println("Please enter a valid positive number for age.");
                         continue;
                     }
                     animalBuilder.age(Integer.parseInt(userInput));
@@ -88,6 +87,7 @@ public class ShelterMenuService {
             int age = Integer.parseInt(input);
             return age > 0;
         } catch (NumberFormatException e) {
+            System.out.println("Please enter a valid positive number for age.");
             return false;
         }
     }
