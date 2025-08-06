@@ -7,7 +7,6 @@ import org.example.util.Commands;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class ShelterService {
