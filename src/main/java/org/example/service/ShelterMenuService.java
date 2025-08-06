@@ -50,20 +50,46 @@ public class ShelterMenuService {
         Animal.AnimalBuilder animalBuilder = Animal.builder();
         for (PetCard field : PetCard.values()) {
             System.out.println(field.getPrompt());
-            if (scanner.hasNext()) {
-                switch (field) {
-                    case NAME -> animalBuilder.name(scanner.next());
-                    case AGE -> {
-                        if (scanner.hasNextInt())
-                            animalBuilder.age(scanner.nextInt());
+            while (true) {
+                String userInput = scanner.next().trim();
+                if (field != PetCard.AGE) {
+                    if (!isValidString(userInput, field)) {
+                        continue;
                     }
-                    case GENDER -> animalBuilder.gender(scanner.next());
-                    case TYPE -> animalBuilder.type(scanner.next());
-                    case BREED -> animalBuilder.breed(scanner.next());
+                    switch (field) {
+                        case NAME -> animalBuilder.name(userInput);
+                        case GENDER -> animalBuilder.gender(userInput);
+                        case TYPE -> animalBuilder.type(userInput);
+                        case BREED -> animalBuilder.breed(userInput);
+                    }
+                } else {
+                    if (!isValidAge(userInput)) {
+                        System.out.println("Please enter a valid positive number for age.");
+                        continue;
+                    }
+                    animalBuilder.age(Integer.parseInt(userInput));
                 }
+                break;
             }
         }
         return animalBuilder.build();
+    }
+
+    private boolean isValidString(String input, PetCard field) {
+        if (input == null || input.isBlank()) {
+            System.out.println("Error: " + field.name() + " cannot be empty or consist of only whitespace.");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean isValidAge(String input) {
+        try {
+            int age = Integer.parseInt(input);
+            return age > 0;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 }
 

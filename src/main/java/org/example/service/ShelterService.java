@@ -7,6 +7,7 @@ import org.example.util.Commands;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class ShelterService {
@@ -42,19 +43,15 @@ public class ShelterService {
     }
 
     public boolean takeAnimal(String animalName) {
-        boolean result = false;
-        if (animalName == null) return result;
-
-        for (Animal animal : animals) {
-            String name = animal.getName();
-            if (name != null && animalName.equalsIgnoreCase(animal.getName())) {
-                animals.remove(animal);
-                saveAnimals();
-                result = true;
-                break;
-            }
+        if (animalName == null || animalName.isBlank()) {
+            return false;
         }
-        return result;
+        boolean removed = animals.removeIf(animal ->
+                animal.getName() != null && animalName.equalsIgnoreCase(animal.getName()));
+        if (removed) {
+            saveAnimals();
+        }
+        return removed;
     }
 
     public List<Animal> showAll() {
