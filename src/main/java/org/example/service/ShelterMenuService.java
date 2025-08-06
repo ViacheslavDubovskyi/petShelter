@@ -76,7 +76,7 @@ public class ShelterMenuService {
 
     private boolean isValidString(String input, PetCard field) {
         if (input == null || input.isBlank()) {
-            System.out.println("Error: " + field.name() + " cannot be empty or consist of only whitespace.");
+            System.out.println(field.name() + Commands.INCORRECT_INPUT);
             return false;
         }
         return true;
@@ -87,7 +87,7 @@ public class ShelterMenuService {
             int age = Integer.parseInt(input);
             return age > 0;
         } catch (NumberFormatException e) {
-            System.out.println("Please enter a valid positive number for age.");
+            System.out.println(Commands.INVALID_AGE);
             return false;
         }
     }

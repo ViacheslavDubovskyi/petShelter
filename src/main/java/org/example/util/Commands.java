@@ -14,6 +14,8 @@ public enum Commands {
     DESERIALIZE_ERROR("Error deserializing shelter."),
     EMPTY_FILE("Shelter is empty."),
     ERROR_SAVING_DATA("Error saving shelter data."),
+    INCORRECT_INPUT(" - field cannot be empty or consist of only whitespace."),
+    INVALID_AGE("Please enter a valid positive number for age."),
     SUCCESS("Operation successful!"),
     FAREWELL("Goodbye!");
 
