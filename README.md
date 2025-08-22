@@ -1,9 +1,9 @@
-🐾 PetShelter
+🐾 **PetShelter**
 
 A console-based Java application for managing pet intake and adoption in small shelters.
 The project follows a layered architecture and uses JSON file serialization for persistent storage.
 
-📌 Features
+📌 **Features**
 
 * Add new pets to the system (Create)
 * View pet list (Read)
@@ -11,7 +11,7 @@ The project follows a layered architecture and uses JSON file serialization for 
 * Remove pet records (Delete)
 * Save and load data via JSON serialization
 
-🏗 Architecture
+🏗 **Architecture**
 
 The app is organized into several packages:
 
@@ -21,23 +21,23 @@ The app is organized into several packages:
 * util – supporting ENAM classes (Commands, PetCard)
 * Main – entry point of the application
 
- 🛠️ Technologies
+ 🛠️ **Technologies**
 
 * Language: Java 21
 * Build Tool: Maven
 * Serialization: JSON
 * Testing: JUnit
 
-💾 Data Storage
+💾 **Data Storage**
 
 * Pet data is serialized to JSON (e.g., via Jackson/Gson).
 * Data is loaded from a file on startup and persisted after changes.
 
-🧪 Testing
+🧪 **Testing**
 
 Unit tests with JUnit, located under src/test/java/org/example.
 
-⚙️ Build & Run
+⚙️ **Build & Run**
 
 The project is built with Maven.
 
