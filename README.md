@@ -29,6 +29,13 @@ The app is organized into several packages:
 
 * Main – entry point of the application
 
+ 🛠️ Technologies
+
+* Language: Java
+* Build Tool: Maven
+* Serialization: JSON
+* Testing: JUnit
+
 💾 Data Storage
 
 * Pet data is serialized to JSON (e.g., via Jackson/Gson).
