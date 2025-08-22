@@ -23,7 +23,7 @@ The app is organized into several packages:
 
  🛠️ Technologies
 
-* Language: Java
+* Language: Java 21
 * Build Tool: Maven
 * Serialization: JSON
 * Testing: JUnit
