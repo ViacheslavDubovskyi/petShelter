@@ -17,14 +17,21 @@ public class ShelterMenuService {
     }
 
     public void run() {
-        scanner.useDelimiter("\n");
         while (true) {
             System.out.println("\n" + Commands.MENU);
-            String userCommand = scanner.next();
+            String userCommand = scanner.nextLine().trim();
             switch (userCommand) {
                 case "leave" -> {
                     if (shelterService.addAnimal(AnimalCard()))
                         System.out.println(Commands.SUCCESS);
+                }
+                case "update" -> {
+                    System.out.println(PetCard.NAME.getPrompt());
+                    String oldName = scanner.next();
+                    Animal updatedAnimal = AnimalCard();
+                    if (shelterService.updateAnimal(oldName, updatedAnimal)) {
+                        System.out.println(Commands.SUCCESS);
+                    }
                 }
                 case "take" -> {
                     System.out.println(PetCard.NAME.getPrompt());

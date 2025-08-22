@@ -5,6 +5,7 @@ public enum Commands {
     MENU("""
             Enter the command:
             leave - Add pet to shelter
+            update - Update existing animal info
             take - Take pet from the shelter
             show - Show all pets
             exit - Exit from the shelter

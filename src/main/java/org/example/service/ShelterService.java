@@ -41,6 +41,23 @@ public class ShelterService {
         }
     }
 
+    public boolean updateAnimal(String oldName, Animal updatedAnimal) {
+        if (oldName == null || oldName.isBlank() || updatedAnimal == null) {
+            return false;
+        }
+
+        for (int i = 0; i < animals.size(); i++) {
+            Animal current = animals.get(i);
+            if (current.getName() != null && oldName.equalsIgnoreCase(current.getName())) {
+                animals.set(i, updatedAnimal);
+                saveAnimals();
+                return true;
+            }
+        }
+        return false;
+    }
+
+
     public boolean takeAnimal(String animalName) {
         if (animalName == null || animalName.isBlank()) {
             return false;
