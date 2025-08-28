@@ -28,14 +28,13 @@ public class ShelterMenuService {
                 }
                 case "update" -> {
                     System.out.println(PetCard.NAME.getPrompt());
-                    String oldName = scanner.next();
+                    String oldName = scanner.nextLine();
                     Animal existingAnimal = shelterService.getAnimalByName(oldName);
                     if (existingAnimal == null) {
                         System.out.println(Commands.INVALID_NAME);
                         break;
                     }
-                    Animal updatedAnimal = AnimalCard();
-                    if (shelterService.updateAnimal(oldName, updatedAnimal)) {
+                    if (shelterService.updateAnimal(oldName, AnimalCard())) {
                         System.out.println(Commands.SUCCESS);
                     }
                 }

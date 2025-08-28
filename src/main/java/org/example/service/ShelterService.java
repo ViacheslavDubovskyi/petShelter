@@ -47,7 +47,7 @@ public class ShelterService {
         }
         for (int i = 0; i < animals.size(); i++) {
             Animal current = animals.get(i);
-            if (current.getName() != null && oldName.equalsIgnoreCase(current.getName())) {
+            if (oldName.equalsIgnoreCase(current.getName())) {
                 animals.set(i, updatedAnimal);
                 saveAnimals();
                 return true;
