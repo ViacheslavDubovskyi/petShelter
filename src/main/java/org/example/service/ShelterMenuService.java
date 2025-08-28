@@ -4,6 +4,7 @@ import org.example.model.Animal;
 import org.example.util.Commands;
 import org.example.util.PetCard;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 public class ShelterMenuService {
@@ -28,10 +29,22 @@ public class ShelterMenuService {
                 case "update" -> {
                     System.out.println(PetCard.NAME.getPrompt());
                     String oldName = scanner.next();
+                    Animal existingAnimal = shelterService.getAnimalByName(oldName);
+                    if (existingAnimal == null) {
+                        System.out.println(Commands.INVALID_NAME);
+                        break;
+                    }
                     Animal updatedAnimal = AnimalCard();
                     if (shelterService.updateAnimal(oldName, updatedAnimal)) {
                         System.out.println(Commands.SUCCESS);
                     }
+                }
+                case "info" -> {
+                    System.out.println(PetCard.NAME.getPrompt());
+                    String name = scanner.next();
+                    Animal animal = shelterService.getAnimalByName(name);
+                    System.out.println(Objects.requireNonNullElse(animal, Commands.INVALID_NAME));
+
                 }
                 case "take" -> {
                     System.out.println(PetCard.NAME.getPrompt());

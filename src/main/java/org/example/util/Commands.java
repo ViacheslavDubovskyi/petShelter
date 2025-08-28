@@ -6,6 +6,7 @@ public enum Commands {
             Enter the command:
             leave - Add pet to shelter
             update - Update existing animal info
+            info - Information about certain animal
             take - Take pet from the shelter
             show - Show all pets
             exit - Exit from the shelter
@@ -17,6 +18,7 @@ public enum Commands {
     ERROR_SAVING_DATA("Error saving shelter data."),
     INCORRECT_INPUT(" - field cannot be empty or consist of only whitespace."),
     INVALID_NUMBER("Please enter a valid positive number value."),
+    INVALID_NAME("Please enter a valid name value."),
     SUCCESS("Operation successful!"),
     FAREWELL("Goodbye!");
 

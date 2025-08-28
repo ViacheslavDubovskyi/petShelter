@@ -45,7 +45,6 @@ public class ShelterService {
         if (oldName == null || oldName.isBlank() || updatedAnimal == null) {
             return false;
         }
-
         for (int i = 0; i < animals.size(); i++) {
             Animal current = animals.get(i);
             if (current.getName() != null && oldName.equalsIgnoreCase(current.getName())) {
@@ -55,6 +54,16 @@ public class ShelterService {
             }
         }
         return false;
+    }
+
+    public Animal getAnimalByName(String name) {
+        if (name == null || name.isBlank()) return null;
+        for (Animal animal : animals) {
+            if (animal.getName() != null && name.equalsIgnoreCase(animal.getName())) {
+                return animal;
+            }
+        }
+        return null;
     }
 
 
